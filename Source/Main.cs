@@ -43,7 +43,7 @@ namespace NoJobAuthors
         public static bool Creator(ref Pawn __result)
         {
             __result = null;
-            Log.Message("UnfinishedThing_GetCreator Patch", false);
+            //Log.Message("UnfinishedThing_GetCreator Patch", false);
             return false;
         }
     }
