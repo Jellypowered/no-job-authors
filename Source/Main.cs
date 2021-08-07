@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Emit;
-using HarmonyLib;
+﻿using HarmonyLib;
 using HugsLib;
 using RimWorld;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Emit;
 using Verse;
 using Verse.AI;
 
@@ -31,7 +30,7 @@ namespace NoJobAuthors
             TraverseParms traverseParams = TraverseParms.For(pawn, pawn.NormalMaxDanger());
 
             __result = (UnfinishedThing)GenClosest.ClosestThingReachable(pawn.Position, pawn.Map, thingReq, PathEndMode.InteractionCell, traverseParams, validator: Validator);
-            //Log.Message("This is closest unfinished thing for bill", false);
+            //Log.Message("This is closest unfinished thing for bill");
             return false;
         }
     }
@@ -43,7 +42,7 @@ namespace NoJobAuthors
         public static bool Creator(ref Pawn __result)
         {
             __result = null;
-            //Log.Message("UnfinishedThing_GetCreator Patch", false);
+            //Log.Message("Set Creator to null");
             return false;
         }
     }
@@ -57,7 +56,7 @@ namespace NoJobAuthors
         public static void Creator(UnfinishedThing __instance)
         {
             _creatorName(__instance) = "Everyone";
-            //Log.Message("I just set the creator to everyone", false);
+            //Log.Message("I just set the creator to everyone");
         }
     }
 
@@ -68,14 +67,14 @@ namespace NoJobAuthors
         public static IEnumerable<CodeInstruction> StartOrResumeBillJob(IEnumerable<CodeInstruction> instructions)
         {
             var arr = instructions.ToArray();
-            //Log.Message("Start or resume bill patch thing", false);
+            //Log.Message("Start or resume bill patch op codes thing");
             for (var index = 0; index < arr.Length; index++)
             {
                 if (arr[index + 0].opcode == OpCodes.Ldloc_S &&
                     arr[index + 1].opcode == OpCodes.Callvirt &&
                     arr[index + 2].opcode == OpCodes.Ldarg_1 &&
                     arr[index + 3].opcode == OpCodes.Bne_Un)
-                    
+
                 {
                     yield return new CodeInstruction(OpCodes.Nop);
                     yield return new CodeInstruction(OpCodes.Nop);
@@ -84,8 +83,8 @@ namespace NoJobAuthors
                     index += 3;
                 }
                 else
-                    //Log.Message("We made it to start or resume bill job else statement", false);
-                yield return arr[index];
+                    //Log.Message("We made it to start or resume bill job else statement");
+                    yield return arr[index];
             }
         }
     }
@@ -96,7 +95,7 @@ namespace NoJobAuthors
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> FinishUftJob(IEnumerable<CodeInstruction> instructions)
         {
-            //Log.Message("FinishUftJob Start Patch", false);
+            //Log.Message("FinishUftJob Start Patch");
             var arr = instructions.ToArray();
             for (var index = 0; index < arr.Length; index++)
             {
@@ -112,8 +111,8 @@ namespace NoJobAuthors
                     index += 3;
                 }
                 else
-                    //Log.Message("FinishUftJob end else Patch", false);
-                yield return arr[index];
+                    //Log.Message("FinishUftJob end else Patch");
+                    yield return arr[index];
             }
         }
     }
