@@ -15,7 +15,6 @@ namespace NoJobAuthors
 
     }
 
-
     [HarmonyPatch(typeof(WorkGiver_DoBill), "ClosestUnfinishedThingForBill")]
     public static class WorkGiver_DoBill_ClosestUnfinishedThingForBill_Patch
     {
@@ -93,7 +92,6 @@ namespace NoJobAuthors
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> FinishUftJob(IEnumerable<CodeInstruction> instructions)
         {
-            Log.Message("FinishUftJob Start Patch");
             var arr = instructions.ToArray();
             for (var index = 0; index < arr.Length; index++)
             {
@@ -109,8 +107,7 @@ namespace NoJobAuthors
                     index += 3;
                 }
                 else
-                    Log.Message("FinishUftJob end else Patch");
-                yield return arr[index];
+                    yield return arr[index];
             }
         }
     }
@@ -119,51 +116,11 @@ namespace NoJobAuthors
     internal class Patch_Bill_ProductionWithUft
     {
         [HarmonyAfter("Harmony_PrisonLabor")]
+
         private static void Prefix(Bill_ProductionWithUft __instance, out UnfinishedThing __state)
         {
-            UnfinishedThing value = Traverse.Create(__instance).Field("boundUftInt").GetValue<UnfinishedThing>();
-            if (value != null && value.Creator != null && value.Creator.IsPrisonerOfColony)
-            {
-                Log.Message("[PL] Saving unfinished thing to state pawn: OVERRIDE" + value.Creator.LabelShort + ", bill: " + value.LabelShort);
-                __state = null;
-            }
-            else
-            {
-                __state = null;
-            }
+            __state = null;
         }
 
-        private static Pawn Postfix(Pawn __result, Bill_ProductionWithUft __instance, UnfinishedThing __state)
-        {
-            if (__result == null && __state != null)
-            {
-                Pawn creator = __state.Creator;
-                if (creator == null || creator.Downed || creator.Destroyed || !creator.Spawned)
-                {
-                    return __result;
-                }
-                Thing thing = __instance.billStack.billGiver as Thing;
-                if (thing != null)
-                {
-                    WorkTypeDef workTypeDef = null;
-                    List<WorkGiverDef> allDefsListForReading = DefDatabase<WorkGiverDef>.AllDefsListForReading;
-                    for (int i = 0; i < allDefsListForReading.Count; i++)
-                    {
-                        if (allDefsListForReading[i].fixedBillGiverDefs != null && allDefsListForReading[i].fixedBillGiverDefs.Contains(thing.def))
-                        {
-                            workTypeDef = allDefsListForReading[i].workType;
-                            break;
-                        }
-                    }
-                    if (workTypeDef != null && !creator.workSettings.WorkIsActive(workTypeDef))
-                    {
-                        return __result;
-                    }
-                }
-                Traverse.Create(__instance).Field("boundUftInt").SetValue(__state);
-                return creator = null;
-            }
-            return __result;
-        }
     }
 }
