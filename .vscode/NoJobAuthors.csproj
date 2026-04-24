@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>net480</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <!-- Modify [RootNamespace], [AssemblyName], [OutputPath], [VersionPrefix] -->
+    <RootNamespace>NoJobAuthors</RootNamespace>
+    <AssemblyName>NoJobAuthors</AssemblyName>
+    <OutputPath>../1.6/Assemblies</OutputPath>
+    <VersionPrefix>0.1.0.0</VersionPrefix>
+    <!-- Do not generate pdb file -->
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RimWorldPath Condition="'$(RimWorldPath)' == '' AND '$(OS)' == 'Windows_NT'"
+      >F:/SteamLibrary/steamapps/common/RimWorld/RimWorldWin64_Data/Managed</RimWorldPath
+    >
+    <RimWorldPath Condition="'$(RimWorldPath)' == '' AND '$(OS)' != 'Windows_NT'"
+      >../../../RimWorldLinux_Data/Managed</RimWorldPath
+    >
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Mod -->
+    <Compile Include="../Source/*" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4633" />
+    <PackageReference Include="Lib.Harmony" Version="2.4.2" ExcludeAssets="runtime">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>
