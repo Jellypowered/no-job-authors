@@ -24,11 +24,24 @@ namespace NoJobAuthors
         private static readonly MethodInfo FinishUftJobMethod =
             AccessTools.Method(typeof(WorkGiver_DoBill), "FinishUftJob");
 
-        private static readonly PropertyInfo AchtungForcedWorkInstanceProperty = AccessTools.Property("AchtungMod.ForcedWork:Instance");
-        private static readonly MethodInfo AchtungAllForcedJobsMethod = AccessTools.Method("AchtungMod.ForcedWork:AllForcedJobs");
-        private static readonly FieldInfo AchtungForcedJobPawnField = AccessTools.Field("AchtungMod.ForcedJob:pawn");
-        private static readonly FieldInfo AchtungForcedJobTargetsField = AccessTools.Field("AchtungMod.ForcedJob:targets");
-        private static readonly FieldInfo AchtungForcedTargetItemField = AccessTools.Field("AchtungMod.ForcedTarget:item");
+        private static PropertyInfo _achtungForcedWorkInstanceProperty;
+        private static MethodInfo _achtungAllForcedJobsMethod;
+        private static FieldInfo _achtungForcedJobPawnField;
+        private static FieldInfo _achtungForcedJobTargetsField;
+        private static FieldInfo _achtungForcedTargetItemField;
+        private static bool _achtungReflectionInitialized;
+
+        private static void EnsureAchtungReflection()
+        {
+            if (_achtungReflectionInitialized)
+                return;
+            _achtungReflectionInitialized = true;
+            _achtungForcedWorkInstanceProperty = AccessTools.Property("AchtungMod.ForcedWork:Instance");
+            _achtungAllForcedJobsMethod = AccessTools.Method("AchtungMod.ForcedWork:AllForcedJobs");
+            _achtungForcedJobPawnField = AccessTools.Field("AchtungMod.ForcedJob:pawn");
+            _achtungForcedJobTargetsField = AccessTools.Field("AchtungMod.ForcedJob:targets");
+            _achtungForcedTargetItemField = AccessTools.Field("AchtungMod.ForcedTarget:item");
+        }
 
         internal static bool ShouldUseSharedAuthoring(RecipeDef recipe)
         {
@@ -64,7 +77,6 @@ namespace NoJobAuthors
                 $"onlyApplyToNonQualityItems={Mod_NoJobAuthors.Settings?.onlyApplyToNonQualityItems ?? false}, " +
                 $"preventUnfinishedInStockpiles={Mod_NoJobAuthors.Settings?.preventUnfinishedInStockpiles ?? false}, " +
                 $"FinishItActive={FinishItActive}, LifeLessonsActive={LifeLessonsActive}, AchtungActive={AchtungActive}, VpeActive={VpeActive}");
-            NJA_Logging.DebugOnce("startup.everyone.label", $"Localized everyone label resolved to '{EveryoneLabel()}'.");
         }
 
         internal static bool IsClaimedByForeignAchtungForcedJob(Pawn pawn, Thing target)
@@ -74,25 +86,26 @@ namespace NoJobAuthors
 
             try
             {
-                object forcedWork = AchtungForcedWorkInstanceProperty?.GetValue(null);
-                if (forcedWork == null || AchtungAllForcedJobsMethod == null)
+                EnsureAchtungReflection();
+                object forcedWork = _achtungForcedWorkInstanceProperty?.GetValue(null);
+                if (forcedWork == null || _achtungAllForcedJobsMethod == null)
                     return false;
 
-                if (!(AchtungAllForcedJobsMethod.Invoke(forcedWork, null) is System.Collections.IEnumerable forcedJobs))
+                if (!(_achtungAllForcedJobsMethod.Invoke(forcedWork, null) is System.Collections.IEnumerable forcedJobs))
                     return false;
 
                 foreach (object forcedJob in forcedJobs)
                 {
-                    Pawn forcedPawn = AchtungForcedJobPawnField?.GetValue(forcedJob) as Pawn;
+                    Pawn forcedPawn = _achtungForcedJobPawnField?.GetValue(forcedJob) as Pawn;
                     if (forcedPawn == null || forcedPawn == pawn)
                         continue;
 
-                    if (!(AchtungForcedJobTargetsField?.GetValue(forcedJob) is System.Collections.IEnumerable forcedTargets))
+                    if (!(_achtungForcedJobTargetsField?.GetValue(forcedJob) is System.Collections.IEnumerable forcedTargets))
                         continue;
 
                     foreach (object forcedTarget in forcedTargets)
                     {
-                        if (!(AchtungForcedTargetItemField?.GetValue(forcedTarget) is LocalTargetInfo item))
+                        if (!(_achtungForcedTargetItemField?.GetValue(forcedTarget) is LocalTargetInfo item))
                             continue;
 
                         if (item.HasThing && item.Thing == target)
