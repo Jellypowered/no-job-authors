@@ -23,8 +23,8 @@ When this is on, pawns that are eligible to craft will first look for any existi
 **Only Apply to Non-Quality Items**
 When this is on, the shared authoring behavior only applies to recipes that do not produce quality-rated items. Art, apparel, weapons, and anything else with a quality outcome will remain locked to its original crafter. Use this if you want shared authoring for industrial goods but not for your carefully trained artisans.
 
-**Prevent Unfinished Items in Stockpiles**
-When this is on, stockpile zones will refuse to accept unfinished items. There is also a button in the settings to clean up any existing stockpile filters that currently allow them.
+**Block Unfinished Items in Storage**
+When this is on, storage buildings reject unfinished items going forward. This does not automatically uncheck any existing storage filter entries. Use the Clean current storage filters button in the settings to update existing storage filters so they disallow unfinished items.
 
 **Finish It! Compatibility**
 Requires the Finish It! mod by Xandrmoro. When this is on, the gizmo that Finish It provides for unfinished items will work correctly with shared authoring, finding an eligible pawn and sending them to complete the job.

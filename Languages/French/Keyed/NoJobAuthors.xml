@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <NJA_Everyone>Tout le monde</NJA_Everyone>
+  <NJA_SettingsCategory>No Job Authors</NJA_SettingsCategory>
+  <NJA_Settings_BetaFeatures>Fonctionnalites beta</NJA_Settings_BetaFeatures>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Label>Finir d'abord les objets inacheves avant de commencer une nouvelle fabrication</NJA_Settings_ForceFinishUnfinishedFirst_Label>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>Quand cette option est activee, les pions terminent d'abord tout objet inacheve correspondant a la recette avant de lancer une nouvelle fabrication.</NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>
+  <NJA_Settings_EnableFinishItCompat_Label>Activer la compatibilite Finish It!</NJA_Settings_EnableFinishItCompat_Label>
+  <NJA_Settings_EnableFinishItCompat_Tooltip>Quand cette option est activee, le gizmo fourni par Finish It! passe par une couche de compatibilite afin de pouvoir assigner un pion meme si No Job Authors supprime la propriete du createur.</NJA_Settings_EnableFinishItCompat_Tooltip>
+  <NJA_Settings_EnableAchtungCompat_Label>Activer la compatibilite Achtung!</NJA_Settings_EnableAchtungCompat_Label>
+  <NJA_Settings_EnableAchtungCompat_Tooltip>Quand cette option est activee, les objets inacheves deja cibles par le travail force Achtung! d'un autre pion sont ignores afin de reduire les conflits de travail force.</NJA_Settings_EnableAchtungCompat_Tooltip>
+  <NJA_Settings_EnableLifeLessonsCompat_Label>Activer les diagnostics de compatibilite Life Lessons</NJA_Settings_EnableLifeLessonsCompat_Label>
+  <NJA_Settings_EnableLifeLessonsCompat_Tooltip>Quand cette option est activee, les versions debug enregistrent les verifications de competence Life Lessons sur les chemins de factures inachevees.</NJA_Settings_EnableLifeLessonsCompat_Tooltip>
+  <NJA_Settings_EnableVpeCompat_Label>Activer les diagnostics de compatibilite VPE</NJA_Settings_EnableVpeCompat_Label>
+  <NJA_Settings_EnableVpeCompat_Tooltip>Quand cette option est activee, les versions debug enregistrent les interactions entre Craft Timeskip de VPE et les objets inacheves.</NJA_Settings_EnableVpeCompat_Tooltip>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Label>Appliquer uniquement aux objets sans qualite</NJA_Settings_OnlyApplyToNonQualityItems_Label>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>Quand cette option est activee, les recettes sensibles a la qualite conservent le comportement vanilla pour l'auteur et l'ouvrier.</NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Label>Bloquer les objets inacheves dans le stockage</NJA_Settings_PreventUnfinishedInStockpiles_Label>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>Quand cette option est activee, les batiments de stockage refusent les objets inacheves a l'avenir. Cela ne decoche pas automatiquement les entrees deja presentes dans les filtres de stockage ; utilisez le bouton ci-dessous pour les nettoyer.</NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>Nettoyer les filtres de stockage actuels</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>{0} filtres de stockage ont ete mis a jour pour interdire les objets inacheves.</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>
+</LanguageData>

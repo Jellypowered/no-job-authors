@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <NJA_Everyone>Everyone</NJA_Everyone>
+  <NJA_SettingsCategory>No Job Authors</NJA_SettingsCategory>
+  <NJA_Settings_BetaFeatures>Beta Features</NJA_Settings_BetaFeatures>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Label>Force-finish unfinished items before starting new crafts</NJA_Settings_ForceFinishUnfinishedFirst_Label>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>When enabled, pawns will finish any existing unfinished item matching a recipe before starting a brand-new craft of that type.</NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>
+  <NJA_Settings_EnableFinishItCompat_Label>Enable Finish It! compatibility</NJA_Settings_EnableFinishItCompat_Label>
+  <NJA_Settings_EnableFinishItCompat_Tooltip>When enabled, the Finish It! gizmo is rerouted through a compatibility shim so it can still assign a pawn even though No Job Authors suppresses creator ownership.</NJA_Settings_EnableFinishItCompat_Tooltip>
+  <NJA_Settings_EnableAchtungCompat_Label>Enable Achtung! compatibility</NJA_Settings_EnableAchtungCompat_Label>
+  <NJA_Settings_EnableAchtungCompat_Tooltip>When enabled, unfinished items already targeted by another pawn's Achtung! forced job are skipped to reduce forced-job stealing.</NJA_Settings_EnableAchtungCompat_Tooltip>
+  <NJA_Settings_EnableLifeLessonsCompat_Label>Enable Life Lessons compatibility diagnostics</NJA_Settings_EnableLifeLessonsCompat_Label>
+  <NJA_Settings_EnableLifeLessonsCompat_Tooltip>When enabled, debug builds log Life Lessons proficiency checks on unfinished-bill paths.</NJA_Settings_EnableLifeLessonsCompat_Tooltip>
+  <NJA_Settings_EnableVpeCompat_Label>Enable VPE compatibility diagnostics</NJA_Settings_EnableVpeCompat_Label>
+  <NJA_Settings_EnableVpeCompat_Tooltip>When enabled, debug builds log VPE Craft Timeskip interactions with unfinished items.</NJA_Settings_EnableVpeCompat_Tooltip>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Label>Only apply to non-quality items</NJA_Settings_OnlyApplyToNonQualityItems_Label>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>When enabled, quality-sensitive recipes keep vanilla author/worker behavior.</NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Label>Block unfinished items in storage</NJA_Settings_PreventUnfinishedInStockpiles_Label>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>When enabled, storage buildings reject unfinished items going forward. This does not automatically uncheck any existing storage filter entries; use the button below to clean those up.</NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>Clean current storage filters</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>Updated {0} storage filters to disallow unfinished items.</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>
 </LanguageData>

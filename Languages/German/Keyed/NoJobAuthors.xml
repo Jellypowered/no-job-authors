@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <NJA_Everyone>Jeder</NJA_Everyone>
+  <NJA_SettingsCategory>No Job Authors</NJA_SettingsCategory>
+  <NJA_Settings_BetaFeatures>Beta-Funktionen</NJA_Settings_BetaFeatures>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Label>Unfertige Gegenstaende zuerst abschliessen, bevor neue Arbeit beginnt</NJA_Settings_ForceFinishUnfinishedFirst_Label>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>Wenn aktiviert, beenden Kolonisten zuerst passende vorhandene unfertige Gegenstaende, bevor sie eine neue Herstellung beginnen.</NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>
+  <NJA_Settings_EnableFinishItCompat_Label>Finish It!-Kompatibilitaet aktivieren</NJA_Settings_EnableFinishItCompat_Label>
+  <NJA_Settings_EnableFinishItCompat_Tooltip>Wenn aktiviert, wird das von Finish It! bereitgestellte Gizmo ueber eine Kompatibilitaetsschicht umgeleitet, damit weiterhin ein Kolonist zugewiesen werden kann, obwohl No Job Authors die Urheberbindung unterdrueckt.</NJA_Settings_EnableFinishItCompat_Tooltip>
+  <NJA_Settings_EnableAchtungCompat_Label>Achtung!-Kompatibilitaet aktivieren</NJA_Settings_EnableAchtungCompat_Label>
+  <NJA_Settings_EnableAchtungCompat_Tooltip>Wenn aktiviert, werden unfertige Gegenstaende uebersprungen, die bereits Ziel eines erzwungenen Achtung!-Auftrags eines anderen Kolonisten sind, um Konflikte bei erzwungenen Auftraegen zu verringern.</NJA_Settings_EnableAchtungCompat_Tooltip>
+  <NJA_Settings_EnableLifeLessonsCompat_Label>Life-Lessons-Kompatibilitaetsdiagnose aktivieren</NJA_Settings_EnableLifeLessonsCompat_Label>
+  <NJA_Settings_EnableLifeLessonsCompat_Tooltip>Wenn aktiviert, protokollieren Debug-Builds Life-Lessons-Faehigkeitspruefungen auf Pfaden fuer unfertige Rechnungen.</NJA_Settings_EnableLifeLessonsCompat_Tooltip>
+  <NJA_Settings_EnableVpeCompat_Label>VPE-Kompatibilitaetsdiagnose aktivieren</NJA_Settings_EnableVpeCompat_Label>
+  <NJA_Settings_EnableVpeCompat_Tooltip>Wenn aktiviert, protokollieren Debug-Builds die Interaktionen von VPE Craft Timeskip mit unfertigen Gegenstaenden.</NJA_Settings_EnableVpeCompat_Tooltip>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Label>Nur auf Gegenstaende ohne Qualitaet anwenden</NJA_Settings_OnlyApplyToNonQualityItems_Label>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>Wenn aktiviert, behalten qualitaetsrelevante Rezepte das Vanilla-Verhalten fuer Autor und Arbeiter bei.</NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Label>Unfertige Gegenstaende im Lager blockieren</NJA_Settings_PreventUnfinishedInStockpiles_Label>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>Wenn aktiviert, lehnen Lagergebaeude unfertige Gegenstaende kuenftig ab. Bereits gesetzte Eintraege in Lagerfiltern werden dabei nicht automatisch entfernt; nutzen Sie den Button unten, um sie zu bereinigen.</NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>Aktuelle Lagerfilter bereinigen</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>{0} Lagerfilter wurden aktualisiert, damit sie keine unfertigen Gegenstaende mehr erlauben.</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>
+</LanguageData>

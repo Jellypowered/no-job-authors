@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <NJA_Everyone>全員</NJA_Everyone>
+  <NJA_SettingsCategory>No Job Authors</NJA_SettingsCategory>
+  <NJA_Settings_BetaFeatures>ベータ機能</NJA_Settings_BetaFeatures>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Label>新しい作業を始める前に未完成品を優先して仕上げる</NJA_Settings_ForceFinishUnfinishedFirst_Label>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>有効にすると、入植者は新しい作業を始める前に、レシピに一致する既存の未完成品を先に仕上げます。</NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>
+  <NJA_Settings_EnableFinishItCompat_Label>Finish It! 互換性を有効化</NJA_Settings_EnableFinishItCompat_Label>
+  <NJA_Settings_EnableFinishItCompat_Tooltip>有効にすると、Finish It! のギズモは互換レイヤー経由で処理され、No Job Authors が作成者の所有情報を抑制していてもポーンを割り当てられます。</NJA_Settings_EnableFinishItCompat_Tooltip>
+  <NJA_Settings_EnableAchtungCompat_Label>Achtung! 互換性を有効化</NJA_Settings_EnableAchtungCompat_Label>
+  <NJA_Settings_EnableAchtungCompat_Tooltip>有効にすると、他のポーンの Achtung! 強制作業ですでに対象になっている未完成品はスキップされ、強制作業の取り合いを減らします。</NJA_Settings_EnableAchtungCompat_Tooltip>
+  <NJA_Settings_EnableLifeLessonsCompat_Label>Life Lessons 互換診断を有効化</NJA_Settings_EnableLifeLessonsCompat_Label>
+  <NJA_Settings_EnableLifeLessonsCompat_Tooltip>有効にすると、デバッグビルドで未完成品の請求処理における Life Lessons の熟練度チェックを記録します。</NJA_Settings_EnableLifeLessonsCompat_Tooltip>
+  <NJA_Settings_EnableVpeCompat_Label>VPE 互換診断を有効化</NJA_Settings_EnableVpeCompat_Label>
+  <NJA_Settings_EnableVpeCompat_Tooltip>有効にすると、デバッグビルドで VPE の Craft Timeskip と未完成品の相互作用を記録します。</NJA_Settings_EnableVpeCompat_Tooltip>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Label>品質のないアイテムにのみ適用</NJA_Settings_OnlyApplyToNonQualityItems_Label>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>有効にすると、品質に影響するレシピは作者と作業者についてバニラの挙動を維持します。</NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Label>保管で未完成品をブロック</NJA_Settings_PreventUnfinishedInStockpiles_Label>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>有効にすると、保管設備は今後未完成品を受け入れません。既存の保管フィルター項目は自動でオフにならないため、下のボタンで整理してください。</NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>現在の保管フィルターを整理</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>{0} 個の保管フィルターを更新し、未完成品を許可しないようにしました。</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>
+</LanguageData>

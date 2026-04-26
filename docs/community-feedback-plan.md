@@ -1,7 +1,7 @@
 # Community Feedback Action Plan
 
 Source: Steam Workshop comments, summarized April 2026.
-Edit out items you don't want to pursue before implementation begins.
+Status: All tracked items implemented as of April 2026. Beta features are opt-in via mod settings. Diagnostic coverage in place for Life Lessons and VPE pending real-world feedback.
 
 ## Ground Rules
 

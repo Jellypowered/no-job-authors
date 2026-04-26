@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <NJA_Everyone>Wszyscy</NJA_Everyone>
+  <NJA_SettingsCategory>No Job Authors</NJA_SettingsCategory>
+  <NJA_Settings_BetaFeatures>Funkcje beta</NJA_Settings_BetaFeatures>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Label>Najpierw koncz niedokonczone przedmioty, zanim zaczniesz nowe wytwarzanie</NJA_Settings_ForceFinishUnfinishedFirst_Label>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>Po wlaczeniu piony najpierw dokoncza wszystkie istniejace niedokonczone przedmioty pasujace do receptury, zanim rozpoczna nowe wytwarzanie.</NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>
+  <NJA_Settings_EnableFinishItCompat_Label>Wlacz zgodnosc z Finish It!</NJA_Settings_EnableFinishItCompat_Label>
+  <NJA_Settings_EnableFinishItCompat_Tooltip>Po wlaczeniu przycisk z Finish It! jest przekierowywany przez warstwe zgodnosci, aby nadal mozna bylo przypisac piona, nawet gdy No Job Authors usuwa powiazanie z tworca.</NJA_Settings_EnableFinishItCompat_Tooltip>
+  <NJA_Settings_EnableAchtungCompat_Label>Wlacz zgodnosc z Achtung!</NJA_Settings_EnableAchtungCompat_Label>
+  <NJA_Settings_EnableAchtungCompat_Tooltip>Po wlaczeniu niedokonczone przedmioty, ktore sa juz celem wymuszonej pracy Achtung! innego piona, beda pomijane, aby ograniczyc konflikty wymuszonych zadan.</NJA_Settings_EnableAchtungCompat_Tooltip>
+  <NJA_Settings_EnableLifeLessonsCompat_Label>Wlacz diagnostyke zgodnosci Life Lessons</NJA_Settings_EnableLifeLessonsCompat_Label>
+  <NJA_Settings_EnableLifeLessonsCompat_Tooltip>Po wlaczeniu buildy debug zapisza kontrole biegosci Life Lessons na sciezkach niedokonczonych zlecen.</NJA_Settings_EnableLifeLessonsCompat_Tooltip>
+  <NJA_Settings_EnableVpeCompat_Label>Wlacz diagnostyke zgodnosci VPE</NJA_Settings_EnableVpeCompat_Label>
+  <NJA_Settings_EnableVpeCompat_Tooltip>Po wlaczeniu buildy debug zapisza interakcje Craft Timeskip z VPE z niedokonczonymi przedmiotami.</NJA_Settings_EnableVpeCompat_Tooltip>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Label>Stosuj tylko do przedmiotow bez jakosci</NJA_Settings_OnlyApplyToNonQualityItems_Label>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>Po wlaczeniu receptury wrazliwe na jakosc zachowaja waniliowe zachowanie autora i pracownika.</NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Label>Blokuj niedokonczone przedmioty w magazynach</NJA_Settings_PreventUnfinishedInStockpiles_Label>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>Po wlaczeniu budynki magazynowe beda odrzucac niedokonczone przedmioty w przyszlosci. To nie odznacza automatycznie istniejacych wpisow w filtrach magazynowych; uzyj przycisku ponizej, aby je wyczyscic.</NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>Wyczysc biezace filtry magazynowe</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>Zaktualizowano {0} filtrow magazynowych, aby nie zezwalaly na niedokonczone przedmioty.</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>
+</LanguageData>

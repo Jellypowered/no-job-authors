@@ -3,6 +3,9 @@
 ## Request Summary
 Add an optional mode that forces pawns to finish existing matching unfinished things before starting new crafts, while preserving current behavior by default.
 
+## Status
+Implemented and shipped as of April 2026. Toggle is off by default. All existing behavior preserved when disabled.
+
 ## Constraints
 - Existing behavior must remain unchanged unless the new setting is enabled.
 - Change must be toggle-driven (default OFF).

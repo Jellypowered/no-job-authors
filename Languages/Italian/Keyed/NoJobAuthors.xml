@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <NJA_Everyone>Tutti</NJA_Everyone>
+  <NJA_SettingsCategory>No Job Authors</NJA_SettingsCategory>
+  <NJA_Settings_BetaFeatures>Funzionalita beta</NJA_Settings_BetaFeatures>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Label>Completa prima gli oggetti incompleti prima di iniziare una nuova lavorazione</NJA_Settings_ForceFinishUnfinishedFirst_Label>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>Quando e attiva, i coloni completano prima qualsiasi oggetto incompleto che corrisponde alla ricetta prima di iniziare una nuova lavorazione.</NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>
+  <NJA_Settings_EnableFinishItCompat_Label>Abilita compatibilita con Finish It!</NJA_Settings_EnableFinishItCompat_Label>
+  <NJA_Settings_EnableFinishItCompat_Tooltip>Quando e attiva, il gizmo fornito da Finish It! viene reindirizzato tramite un livello di compatibilita cosi da poter assegnare comunque un colono anche se No Job Authors sopprime la proprieta del creatore.</NJA_Settings_EnableFinishItCompat_Tooltip>
+  <NJA_Settings_EnableAchtungCompat_Label>Abilita compatibilita con Achtung!</NJA_Settings_EnableAchtungCompat_Label>
+  <NJA_Settings_EnableAchtungCompat_Tooltip>Quando e attiva, gli oggetti incompleti gia presi di mira da un lavoro forzato di Achtung! assegnato a un altro colono vengono ignorati per ridurre i conflitti sui lavori forzati.</NJA_Settings_EnableAchtungCompat_Tooltip>
+  <NJA_Settings_EnableLifeLessonsCompat_Label>Abilita diagnostica di compatibilita Life Lessons</NJA_Settings_EnableLifeLessonsCompat_Label>
+  <NJA_Settings_EnableLifeLessonsCompat_Tooltip>Quando e attiva, le build di debug registrano i controlli di competenza di Life Lessons sui percorsi delle fatture incompiute.</NJA_Settings_EnableLifeLessonsCompat_Tooltip>
+  <NJA_Settings_EnableVpeCompat_Label>Abilita diagnostica di compatibilita VPE</NJA_Settings_EnableVpeCompat_Label>
+  <NJA_Settings_EnableVpeCompat_Tooltip>Quando e attiva, le build di debug registrano le interazioni tra Craft Timeskip di VPE e gli oggetti incompleti.</NJA_Settings_EnableVpeCompat_Tooltip>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Label>Applica solo agli oggetti senza qualita</NJA_Settings_OnlyApplyToNonQualityItems_Label>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>Quando e attiva, le ricette sensibili alla qualita mantengono il comportamento vanilla per autore e lavoratore.</NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Label>Blocca gli oggetti incompleti nello stoccaggio</NJA_Settings_PreventUnfinishedInStockpiles_Label>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>Quando e attiva, gli edifici di stoccaggio rifiutano gli oggetti incompleti in futuro. Questo non deseleziona automaticamente le voci gia presenti nei filtri di stoccaggio; usa il pulsante qui sotto per ripulirle.</NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>Pulisci i filtri di stoccaggio attuali</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>Aggiornati {0} filtri di stoccaggio per non consentire piu gli oggetti incompleti.</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>
+</LanguageData>

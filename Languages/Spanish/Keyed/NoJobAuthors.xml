@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <NJA_Everyone>Todos</NJA_Everyone>
+  <NJA_SettingsCategory>No Job Authors</NJA_SettingsCategory>
+  <NJA_Settings_BetaFeatures>Funciones beta</NJA_Settings_BetaFeatures>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Label>Terminar primero los objetos inacabados antes de iniciar una nueva fabricacion</NJA_Settings_ForceFinishUnfinishedFirst_Label>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>Cuando esta opcion esta activada, los peones terminan primero cualquier objeto inacabado existente que coincida con la receta antes de iniciar una fabricacion nueva.</NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>
+  <NJA_Settings_EnableFinishItCompat_Label>Activar compatibilidad con Finish It!</NJA_Settings_EnableFinishItCompat_Label>
+  <NJA_Settings_EnableFinishItCompat_Tooltip>Cuando esta opcion esta activada, el gizmo de Finish It! se redirige a traves de una capa de compatibilidad para que aun pueda asignar un peon aunque No Job Authors suprima la autoria del creador.</NJA_Settings_EnableFinishItCompat_Tooltip>
+  <NJA_Settings_EnableAchtungCompat_Label>Activar compatibilidad con Achtung!</NJA_Settings_EnableAchtungCompat_Label>
+  <NJA_Settings_EnableAchtungCompat_Tooltip>Cuando esta opcion esta activada, se omiten los objetos inacabados que ya estan marcados por el trabajo forzado de Achtung! de otro peon, para reducir los conflictos de trabajos forzados.</NJA_Settings_EnableAchtungCompat_Tooltip>
+  <NJA_Settings_EnableLifeLessonsCompat_Label>Activar diagnosticos de compatibilidad con Life Lessons</NJA_Settings_EnableLifeLessonsCompat_Label>
+  <NJA_Settings_EnableLifeLessonsCompat_Tooltip>Cuando esta opcion esta activada, las compilaciones de depuracion registran las comprobaciones de competencia de Life Lessons en rutas de encargos inacabados.</NJA_Settings_EnableLifeLessonsCompat_Tooltip>
+  <NJA_Settings_EnableVpeCompat_Label>Activar diagnosticos de compatibilidad con VPE</NJA_Settings_EnableVpeCompat_Label>
+  <NJA_Settings_EnableVpeCompat_Tooltip>Cuando esta opcion esta activada, las compilaciones de depuracion registran las interacciones entre Craft Timeskip de VPE y los objetos inacabados.</NJA_Settings_EnableVpeCompat_Tooltip>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Label>Aplicar solo a objetos sin calidad</NJA_Settings_OnlyApplyToNonQualityItems_Label>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>Cuando esta opcion esta activada, las recetas sensibles a la calidad mantienen el comportamiento vanilla para autor y trabajador.</NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Label>Bloquear objetos inacabados en almacenamiento</NJA_Settings_PreventUnfinishedInStockpiles_Label>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>Cuando esta opcion esta activada, los edificios de almacenamiento rechazaran los objetos inacabados de ahora en adelante. Esto no desmarca automaticamente las entradas ya existentes en los filtros de almacenamiento; utiliza el boton de abajo para limpiarlas.</NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>Limpiar filtros de almacenamiento actuales</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>Se actualizaron {0} filtros de almacenamiento para no permitir objetos inacabados.</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>
+</LanguageData>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <NJA_Everyone>所有人</NJA_Everyone>
+  <NJA_SettingsCategory>无工作作者</NJA_SettingsCategory>
+  <NJA_Settings_BetaFeatures>测试功能</NJA_Settings_BetaFeatures>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Label>优先完成未完成物品，再开始新的制作</NJA_Settings_ForceFinishUnfinishedFirst_Label>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>启用后，殖民者会先完成任何与配方匹配的现有未完成物品，再开始全新的制作任务。</NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>
+  <NJA_Settings_EnableFinishItCompat_Label>启用 Finish It! 兼容性</NJA_Settings_EnableFinishItCompat_Label>
+  <NJA_Settings_EnableFinishItCompat_Tooltip>启用后，Finish It! 提供的小按钮会通过兼容层重新分配殖民者，即使 No Job Authors 会抑制创建者归属，也仍可正确指派。</NJA_Settings_EnableFinishItCompat_Tooltip>
+  <NJA_Settings_EnableAchtungCompat_Label>启用 Achtung! 兼容性</NJA_Settings_EnableAchtungCompat_Label>
+  <NJA_Settings_EnableAchtungCompat_Tooltip>启用后，已被其他殖民者通过 Achtung! 强制指定的未完成物品会被跳过，以减少强制工作被抢占的情况。</NJA_Settings_EnableAchtungCompat_Tooltip>
+  <NJA_Settings_EnableLifeLessonsCompat_Label>启用 Life Lessons 兼容性诊断</NJA_Settings_EnableLifeLessonsCompat_Label>
+  <NJA_Settings_EnableLifeLessonsCompat_Tooltip>启用后，调试版本会记录未完成账单路径上的 Life Lessons 熟练度检查。</NJA_Settings_EnableLifeLessonsCompat_Tooltip>
+  <NJA_Settings_EnableVpeCompat_Label>启用 VPE 兼容性诊断</NJA_Settings_EnableVpeCompat_Label>
+  <NJA_Settings_EnableVpeCompat_Tooltip>启用后，调试版本会记录 VPE 的 Craft Timeskip 与未完成物品的交互。</NJA_Settings_EnableVpeCompat_Tooltip>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Label>仅应用于非品质物品</NJA_Settings_OnlyApplyToNonQualityItems_Label>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>启用后，会产出品质物品的配方将保留原版的作者/工人行为。</NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Label>阻止未完成物品进入储存区</NJA_Settings_PreventUnfinishedInStockpiles_Label>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>启用后，储存建筑会拒绝接收之后出现的未完成物品。这不会自动取消任何现有储存筛选器中的勾选；请使用下方按钮清理这些设置。</NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>清理当前储存筛选器</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>已更新 {0} 个储存筛选器，使其不再允许未完成物品。</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>
+</LanguageData>

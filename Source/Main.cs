@@ -24,53 +24,53 @@ namespace NoJobAuthors
             NJA_Features.LogStartupDiagnostics(this.Content.PackageIdPlayerFacing);
         }
 
-        public override string SettingsCategory() => "No Job Authors";
+        public override string SettingsCategory() => "NJA_SettingsCategory".Translate();
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
             var listing = new Listing_Standard();
             listing.Begin(inRect);
             listing.CheckboxLabeled(
-                "Force-finish unfinished items before starting new crafts",
+                "NJA_Settings_ForceFinishUnfinishedFirst_Label".Translate(),
                 ref Settings.forceFinishUnfinishedFirst,
-                "When enabled, pawns will finish any existing unfinished item matching a recipe before starting a brand-new craft of that type."
+                "NJA_Settings_ForceFinishUnfinishedFirst_Tooltip".Translate()
             );
             listing.GapLine();
-            listing.Label("Beta Features");
+            listing.Label("NJA_Settings_BetaFeatures".Translate());
             listing.CheckboxLabeled(
-                "Enable Finish It! compatibility",
+                "NJA_Settings_EnableFinishItCompat_Label".Translate(),
                 ref Settings.enableFinishItCompat,
-                "When enabled, the Finish It! gizmo is rerouted through a compatibility shim so it can still assign a pawn even though No Job Authors suppresses creator ownership."
+                "NJA_Settings_EnableFinishItCompat_Tooltip".Translate()
             );
             listing.CheckboxLabeled(
-                "Enable Achtung! compatibility",
+                "NJA_Settings_EnableAchtungCompat_Label".Translate(),
                 ref Settings.enableAchtungCompat,
-                "When enabled, unfinished items already targeted by another pawn's Achtung! forced job are skipped to reduce forced-job stealing."
+                "NJA_Settings_EnableAchtungCompat_Tooltip".Translate()
             );
             listing.CheckboxLabeled(
-                "Enable Life Lessons compatibility diagnostics",
+                "NJA_Settings_EnableLifeLessonsCompat_Label".Translate(),
                 ref Settings.enableLifeLessonsCompat,
-                "When enabled, debug builds log Life Lessons proficiency checks on unfinished-bill paths."
+                "NJA_Settings_EnableLifeLessonsCompat_Tooltip".Translate()
             );
             listing.CheckboxLabeled(
-                "Enable VPE compatibility diagnostics",
+                "NJA_Settings_EnableVpeCompat_Label".Translate(),
                 ref Settings.enableVpeCompat,
-                "When enabled, debug builds log VPE Craft Timeskip interactions with unfinished items."
+                "NJA_Settings_EnableVpeCompat_Tooltip".Translate()
             );
             listing.CheckboxLabeled(
-                "Only apply to non-quality items",
+                "NJA_Settings_OnlyApplyToNonQualityItems_Label".Translate(),
                 ref Settings.onlyApplyToNonQualityItems,
-                "When enabled, quality-sensitive recipes keep vanilla author/worker behavior."
+                "NJA_Settings_OnlyApplyToNonQualityItems_Tooltip".Translate()
             );
             listing.CheckboxLabeled(
-                "Prevent unfinished items from entering stockpiles",
+                "NJA_Settings_PreventUnfinishedInStockpiles_Label".Translate(),
                 ref Settings.preventUnfinishedInStockpiles,
-                "When enabled, storage buildings reject unfinished items."
+                "NJA_Settings_PreventUnfinishedInStockpiles_Tooltip".Translate()
             );
-            if (listing.ButtonText("Remove unfinished items from current stockpile filters"))
+            if (listing.ButtonText("NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button".Translate()))
             {
                 int updatedFilters = NJA_Features.RemoveUnfinishedFromStockpileFilters();
-                Messages.Message($"Updated {updatedFilters} stockpile filters.", MessageTypeDefOf.TaskCompletion, false);
+                Messages.Message("NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result".Translate(updatedFilters), MessageTypeDefOf.TaskCompletion, false);
             }
             listing.End();
         }
@@ -83,6 +83,23 @@ namespace NoJobAuthors
             {
                 if (!NJA_Features.ShouldUseSharedAuthoring(bill?.recipe))
                     return true;
+
+                // Only replace vanilla when a feature actually needs a custom search.
+                // With all relevant settings off the vanilla method is correct and sufficient.
+                bool needsCustomSearch = Mod_NoJobAuthors.Settings?.enableAchtungCompat == true ||
+                                         Mod_NoJobAuthors.Settings?.forceFinishUnfinishedFirst == true;
+                if (!needsCustomSearch)
+                    return true;
+
+                if (!NJA_Features.BillAllowsPawn(bill, pawn))
+                {
+                    __result = null;
+                    NJA_Logging.DebugThrottled(
+                        $"closest.restricted.{pawn?.ThingID ?? "null"}.{bill?.recipe?.defName ?? "null"}",
+                        $"ClosestUnfinishedThingForBill skipped {pawn?.LabelShort ?? "null"} because the bill is explicitly restricted to another pawn.",
+                        180);
+                    return false;
+                }
 
                 string pawnId = pawn?.ThingID ?? "null";
                 string recipeName = bill?.recipe?.defName ?? "null";
@@ -243,6 +260,7 @@ namespace NoJobAuthors
             {
                 if (!NJA_Features.ShouldUseSharedAuthoring(bill?.recipe)) return null;
                 if (bill.recipe?.unfinishedThingDef == null) return null;
+                if (!NJA_Features.BillAllowsPawn(bill, pawn)) return null;
 
                 ThingRequest thingReq = ThingRequest.ForDef(bill.recipe.unfinishedThingDef);
                 TraverseParms traverseParams = TraverseParms.For(pawn, pawn.NormalMaxDanger());
@@ -411,6 +429,27 @@ namespace NoJobAuthors
             {
                 if (!NJA_Features.ShouldUseSharedAuthoring(__instance?.recipe))
                     return true;
+
+                Pawn selectedWorker = NJA_Features.SelectedWorker(__instance);
+                if (selectedWorker != null)
+                {
+                    // Still check skill range even when a specific worker is selected.
+                    if (!NJA_Features.BillAllowsPawn(__instance, selectedWorker))
+                    {
+                        __result = null;
+                        NJA_Logging.DebugThrottled(
+                            $"boundworker.restricted.skill.{selectedWorker.ThingID}.{__instance.recipe?.defName ?? "null"}",
+                            $"BoundWorker override returned null because {selectedWorker.LabelShort} does not meet bill requirements for recipe '{__instance.recipe?.defName ?? "null"}'.",
+                            240);
+                        return false;
+                    }
+                    __result = selectedWorker;
+                    NJA_Logging.DebugThrottled(
+                        $"boundworker.restricted.{selectedWorker.ThingID}.{__instance.recipe?.defName ?? "null"}",
+                        $"BoundWorker override preserved explicit worker restriction for {selectedWorker.LabelShort} on recipe '{__instance.recipe?.defName ?? "null"}'.",
+                        240);
+                    return false;
+                }
 
                 UnfinishedThing uft = _boundUft(__instance);
                 if (uft == null)

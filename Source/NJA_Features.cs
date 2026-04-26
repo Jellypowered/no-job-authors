@@ -23,6 +23,8 @@ namespace NoJobAuthors
 
         private static readonly MethodInfo FinishUftJobMethod =
             AccessTools.Method(typeof(WorkGiver_DoBill), "FinishUftJob");
+        private static readonly FieldInfo PawnRestrictionField =
+            AccessTools.Field(typeof(Bill), "pawnRestriction");
 
         private static PropertyInfo _achtungForcedWorkInstanceProperty;
         private static MethodInfo _achtungAllForcedJobsMethod;
@@ -63,6 +65,32 @@ namespace NoJobAuthors
         internal static string EveryoneLabel()
         {
             return "NJA_Everyone".Translate().Resolve();
+        }
+
+        internal static Pawn SelectedWorker(Bill bill)
+        {
+            try
+            {
+                return PawnRestrictionField?.GetValue(bill) as Pawn;
+            }
+            catch (Exception ex)
+            {
+                NJA_Logging.Warn($"Failed to resolve bill pawn restriction: {ex.Message}");
+                return null;
+            }
+        }
+
+        internal static bool BillAllowsPawn(Bill bill, Pawn pawn)
+        {
+            try
+            {
+                return bill?.PawnAllowedToStartAnew(pawn) ?? true;
+            }
+            catch (Exception ex)
+            {
+                NJA_Logging.Warn($"BillAllowsPawn check failed for {pawn?.LabelShort ?? "null"}: {ex.Message}");
+                return true;
+            }
         }
 
         internal static void LogStartupDiagnostics(string packageId)
@@ -228,7 +256,16 @@ namespace NoJobAuthors
         {
             HashSet<Pawn> seen = new HashSet<Pawn>();
 
-            if (bill.BoundWorker != null && FinishItCandidateAllowed(bill.BoundWorker, unfinishedThing) && seen.Add(bill.BoundWorker))
+            Pawn selectedWorker = SelectedWorker(bill);
+            if (selectedWorker != null)
+            {
+                if (FinishItCandidateAllowed(selectedWorker, unfinishedThing) && seen.Add(selectedWorker))
+                    yield return selectedWorker;
+
+                yield break;
+            }
+
+            if (bill.BoundWorker != null && BillAllowsPawn(bill, bill.BoundWorker) && FinishItCandidateAllowed(bill.BoundWorker, unfinishedThing) && seen.Add(bill.BoundWorker))
                 yield return bill.BoundWorker;
 
             foreach (Pawn pawn in unfinishedThing.MapHeld?.mapPawns?.FreeColonistsSpawned ?? Enumerable.Empty<Pawn>())
@@ -236,7 +273,7 @@ namespace NoJobAuthors
                 if (!seen.Add(pawn))
                     continue;
 
-                if (FinishItCandidateAllowed(pawn, unfinishedThing))
+                if (BillAllowsPawn(bill, pawn) && FinishItCandidateAllowed(pawn, unfinishedThing))
                     yield return pawn;
             }
         }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <NJA_Everyone>Все</NJA_Everyone>
+  <NJA_SettingsCategory>No Job Authors</NJA_SettingsCategory>
+  <NJA_Settings_BetaFeatures>Бета-функции</NJA_Settings_BetaFeatures>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Label>Сначала завершать незаконченные предметы, прежде чем начинать новую работу</NJA_Settings_ForceFinishUnfinishedFirst_Label>
+  <NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>Если включено, пешки сначала завершают любые существующие незаконченные предметы, подходящие под рецепт, прежде чем начинать новое изготовление.</NJA_Settings_ForceFinishUnfinishedFirst_Tooltip>
+  <NJA_Settings_EnableFinishItCompat_Label>Включить совместимость с Finish It!</NJA_Settings_EnableFinishItCompat_Label>
+  <NJA_Settings_EnableFinishItCompat_Tooltip>Если включено, кнопка от Finish It! перенаправляется через слой совместимости, чтобы по-прежнему можно было назначить пешку, даже если No Job Authors подавляет привязку к создателю.</NJA_Settings_EnableFinishItCompat_Tooltip>
+  <NJA_Settings_EnableAchtungCompat_Label>Включить совместимость с Achtung!</NJA_Settings_EnableAchtungCompat_Label>
+  <NJA_Settings_EnableAchtungCompat_Tooltip>Если включено, незаконченные предметы, уже выбранные как цель принудительной работы Achtung! для другой пешки, пропускаются, чтобы уменьшить конфликты принудительных заданий.</NJA_Settings_EnableAchtungCompat_Tooltip>
+  <NJA_Settings_EnableLifeLessonsCompat_Label>Включить диагностику совместимости Life Lessons</NJA_Settings_EnableLifeLessonsCompat_Label>
+  <NJA_Settings_EnableLifeLessonsCompat_Tooltip>Если включено, отладочные сборки будут записывать проверки навыка Life Lessons на путях незавершённых заказов.</NJA_Settings_EnableLifeLessonsCompat_Tooltip>
+  <NJA_Settings_EnableVpeCompat_Label>Включить диагностику совместимости VPE</NJA_Settings_EnableVpeCompat_Label>
+  <NJA_Settings_EnableVpeCompat_Tooltip>Если включено, отладочные сборки будут записывать взаимодействия Craft Timeskip из VPE с незавершёнными предметами.</NJA_Settings_EnableVpeCompat_Tooltip>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Label>Применять только к предметам без качества</NJA_Settings_OnlyApplyToNonQualityItems_Label>
+  <NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>Если включено, рецепты, чувствительные к качеству, сохраняют ванильное поведение автора и работника.</NJA_Settings_OnlyApplyToNonQualityItems_Tooltip>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Label>Блокировать незаконченные предметы в хранилищах</NJA_Settings_PreventUnfinishedInStockpiles_Label>
+  <NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>Если включено, здания хранения будут отклонять незаконченные предметы в дальнейшем. Это не снимает автоматически уже отмеченные пункты в существующих фильтрах хранения; используйте кнопку ниже, чтобы очистить их.</NJA_Settings_PreventUnfinishedInStockpiles_Tooltip>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>Очистить текущие фильтры хранения</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Button>
+  <NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>Обновлено фильтров хранения: {0}; незаконченные предметы больше не разрешены.</NJA_Settings_RemoveUnfinishedFromStockpileFilters_Result>
+</LanguageData>
