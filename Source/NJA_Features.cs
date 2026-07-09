@@ -48,7 +48,7 @@ namespace NoJobAuthors
         internal static bool ShouldUseSharedAuthoring(RecipeDef recipe)
         {
             if (recipe == null)
-                return true;
+                return false;
 
             if (Mod_NoJobAuthors.Settings?.onlyApplyToNonQualityItems == true && IsQualitySensitiveRecipe(recipe))
             {
@@ -60,6 +60,15 @@ namespace NoJobAuthors
             }
 
             return true;
+        }
+
+        internal static bool ShouldUseSharedAuthoring(UnfinishedThing unfinishedThing)
+        {
+            RecipeDef recipe = unfinishedThing?.Recipe;
+            if (recipe == null && unfinishedThing?.BoundBill is Bill_ProductionWithUft boundBill)
+                recipe = boundBill.recipe;
+
+            return ShouldUseSharedAuthoring(recipe);
         }
 
         internal static string EveryoneLabel()
@@ -84,7 +93,16 @@ namespace NoJobAuthors
         {
             try
             {
-                return bill?.PawnAllowedToStartAnew(pawn) ?? true;
+                if (bill == null)
+                    return true;
+
+                if (!bill.PawnAllowedToStartAnew(pawn))
+                    return false;
+
+                if (bill.recipe != null && !bill.recipe.PawnSatisfiesSkillRequirements(pawn))
+                    return false;
+
+                return true;
             }
             catch (Exception ex)
             {

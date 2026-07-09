@@ -129,7 +129,7 @@ namespace NoJobAuthors
             [HarmonyPrefix]
             public static bool Creator(UnfinishedThing __instance, ref Pawn __result)
             {
-                if (!NJA_Features.ShouldUseSharedAuthoring(__instance?.Recipe))
+                if (!NJA_Features.ShouldUseSharedAuthoring(__instance))
                     return true;
 
                 __result = null;
@@ -145,7 +145,7 @@ namespace NoJobAuthors
             [HarmonyPostfix]
             public static void Creator(UnfinishedThing __instance)
             {
-                if (!NJA_Features.ShouldUseSharedAuthoring(__instance?.Recipe))
+                if (!NJA_Features.ShouldUseSharedAuthoring(__instance))
                     return;
 
                 _creatorName(__instance) = NJA_Features.EveryoneLabel();
