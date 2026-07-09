@@ -153,6 +153,22 @@ namespace NoJobAuthors
             }
         }
 
+        [HarmonyPatch(typeof(UnfinishedThing), "set_BoundBill")]
+        public static class UnfinishedThing_SetBoundBill_Patch
+        {
+            private static readonly AccessTools.FieldRef<UnfinishedThing, string> _creatorName = AccessTools.FieldRefAccess<UnfinishedThing, string>("creatorName");
+
+            [HarmonyPostfix]
+            public static void BoundBill(UnfinishedThing __instance)
+            {
+                if (!NJA_Features.ShouldUseSharedAuthoring(__instance))
+                    return;
+
+                _creatorName(__instance) = NJA_Features.EveryoneLabel();
+                NJA_Logging.DebugThrottled($"boundbill.set.{__instance?.thingIDNumber ?? -1}", $"UnfinishedThing.BoundBill setter normalized creator name to '{NJA_Features.EveryoneLabel()}'.", 600);
+            }
+        }
+
         [HarmonyPatch(typeof(WorkGiver_DoBill), "StartOrResumeBillJob")]
         public static class WorkGiver_DoBill_StartOrResumeBillJob_Patch
         {
