@@ -111,6 +111,28 @@ namespace NoJobAuthors
             }
         }
 
+        internal static bool ResumeJobAuthorMismatch(UnfinishedThing unfinishedThing, Pawn pawn)
+        {
+            if (unfinishedThing == null)
+                return true;
+
+            if (ShouldUseSharedAuthoring(unfinishedThing))
+                return false;
+
+            return unfinishedThing.Creator != pawn;
+        }
+
+        internal static bool FinishJobAuthorMatches(UnfinishedThing unfinishedThing, Pawn pawn)
+        {
+            if (unfinishedThing == null)
+                return false;
+
+            if (ShouldUseSharedAuthoring(unfinishedThing))
+                return true;
+
+            return unfinishedThing.Creator == pawn;
+        }
+
         internal static void LogStartupDiagnostics(string packageId)
         {
             NJA_Logging.DebugOnce("startup.diagnostics", 

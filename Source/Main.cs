@@ -172,6 +172,9 @@ namespace NoJobAuthors
         [HarmonyPatch(typeof(WorkGiver_DoBill), "StartOrResumeBillJob")]
         public static class WorkGiver_DoBill_StartOrResumeBillJob_Patch
         {
+            private static readonly MethodInfo _resumeJobAuthorMismatch =
+                AccessTools.Method(typeof(NJA_Features), nameof(NJA_Features.ResumeJobAuthorMismatch));
+
             [HarmonyTranspiler]
             public static IEnumerable<CodeInstruction> StartOrResumeBillJob(IEnumerable<CodeInstruction> instructions)
             {
@@ -179,16 +182,18 @@ namespace NoJobAuthors
                 int rewrites = 0;
                 for (var index = 0; index < arr.Length; index++)
                 {
-                    if (arr[index + 0].opcode == OpCodes.Ldloc_S &&
+                    if (index + 3 < arr.Length &&
+                        arr[index + 0].opcode == OpCodes.Ldloc_S &&
                         arr[index + 1].opcode == OpCodes.Callvirt &&
+                        Equals(arr[index + 1].operand, AccessTools.PropertyGetter(typeof(UnfinishedThing), nameof(UnfinishedThing.Creator))) &&
                         arr[index + 2].opcode == OpCodes.Ldarg_1 &&
                         arr[index + 3].opcode == OpCodes.Bne_Un)
 
                     {
-                        yield return new CodeInstruction(OpCodes.Nop);
-                        yield return new CodeInstruction(OpCodes.Nop);
-                        yield return new CodeInstruction(OpCodes.Nop);
-                        yield return new CodeInstruction(OpCodes.Nop);
+                        yield return new CodeInstruction(arr[index + 0].opcode, arr[index + 0].operand);
+                        yield return new CodeInstruction(OpCodes.Ldarg_1);
+                        yield return new CodeInstruction(OpCodes.Call, _resumeJobAuthorMismatch);
+                        yield return new CodeInstruction(OpCodes.Brtrue, arr[index + 3].operand);
                         rewrites++;
                         index += 3;
                     }
@@ -204,6 +209,9 @@ namespace NoJobAuthors
         [HarmonyPatch(typeof(WorkGiver_DoBill), "FinishUftJob")]
         public static class WorkGiver_DoBill_FinishUftJob_Patch
         {
+            private static readonly MethodInfo _finishJobAuthorMatches =
+                AccessTools.Method(typeof(NJA_Features), nameof(NJA_Features.FinishJobAuthorMatches));
+
             [HarmonyTranspiler]
             public static IEnumerable<CodeInstruction> FinishUftJob(IEnumerable<CodeInstruction> instructions)
             {
@@ -211,15 +219,17 @@ namespace NoJobAuthors
                 int rewrites = 0;
                 for (var index = 0; index < arr.Length; index++)
                 {
-                    if (arr[index + 0].opcode == OpCodes.Ldarg_1 &&
+                    if (index + 3 < arr.Length &&
+                        arr[index + 0].opcode == OpCodes.Ldarg_1 &&
                         arr[index + 1].opcode == OpCodes.Callvirt &&
+                        Equals(arr[index + 1].operand, AccessTools.PropertyGetter(typeof(UnfinishedThing), nameof(UnfinishedThing.Creator))) &&
                         arr[index + 2].opcode == OpCodes.Ldarg_0 &&
                         arr[index + 3].opcode == OpCodes.Beq_S)
                     {
-                        yield return new CodeInstruction(OpCodes.Nop);
-                        yield return new CodeInstruction(OpCodes.Nop);
-                        yield return new CodeInstruction(OpCodes.Nop);
-                        yield return new CodeInstruction(OpCodes.Br, arr[index + 3].operand);
+                        yield return new CodeInstruction(OpCodes.Ldarg_1);
+                        yield return new CodeInstruction(OpCodes.Ldarg_0);
+                        yield return new CodeInstruction(OpCodes.Call, _finishJobAuthorMatches);
+                        yield return new CodeInstruction(OpCodes.Brtrue_S, arr[index + 3].operand);
                         rewrites++;
                         index += 3;
                     }
