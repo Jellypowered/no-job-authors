@@ -25,6 +25,8 @@ namespace NoJobAuthors
             AccessTools.Method(typeof(WorkGiver_DoBill), "FinishUftJob");
         private static readonly FieldInfo PawnRestrictionField =
             AccessTools.Field(typeof(Bill), "pawnRestriction");
+        private static readonly AccessTools.FieldRef<UnfinishedThing, Pawn> CreatorField =
+            AccessTools.FieldRefAccess<UnfinishedThing, Pawn>("creatorInt");
 
         private static PropertyInfo _achtungForcedWorkInstanceProperty;
         private static MethodInfo _achtungAllForcedJobsMethod;
@@ -74,6 +76,18 @@ namespace NoJobAuthors
         internal static string EveryoneLabel()
         {
             return "NJA_Everyone".Translate().Resolve();
+        }
+
+        internal static string DesiredCreatorName(UnfinishedThing unfinishedThing)
+        {
+            if (unfinishedThing == null)
+                return null;
+
+            if (ShouldUseSharedAuthoring(unfinishedThing))
+                return EveryoneLabel();
+
+            Pawn creator = CreatorField(unfinishedThing);
+            return creator?.LabelShort;
         }
 
         internal static Pawn SelectedWorker(Bill bill)

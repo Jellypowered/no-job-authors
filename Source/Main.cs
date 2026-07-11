@@ -145,11 +145,12 @@ namespace NoJobAuthors
             [HarmonyPostfix]
             public static void Creator(UnfinishedThing __instance)
             {
-                if (!NJA_Features.ShouldUseSharedAuthoring(__instance))
+                string creatorName = NJA_Features.DesiredCreatorName(__instance);
+                if (creatorName == null)
                     return;
 
-                _creatorName(__instance) = NJA_Features.EveryoneLabel();
-                NJA_Logging.DebugThrottled($"creator.set.{__instance?.thingIDNumber ?? -1}", $"UnfinishedThing.Creator setter normalized to '{NJA_Features.EveryoneLabel()}'.", 600);
+                _creatorName(__instance) = creatorName;
+                NJA_Logging.DebugThrottled($"creator.set.{__instance?.thingIDNumber ?? -1}", $"UnfinishedThing.Creator setter normalized to '{creatorName}'.", 600);
             }
         }
 
@@ -161,11 +162,12 @@ namespace NoJobAuthors
             [HarmonyPostfix]
             public static void BoundBill(UnfinishedThing __instance)
             {
-                if (!NJA_Features.ShouldUseSharedAuthoring(__instance))
+                string creatorName = NJA_Features.DesiredCreatorName(__instance);
+                if (creatorName == null)
                     return;
 
-                _creatorName(__instance) = NJA_Features.EveryoneLabel();
-                NJA_Logging.DebugThrottled($"boundbill.set.{__instance?.thingIDNumber ?? -1}", $"UnfinishedThing.BoundBill setter normalized creator name to '{NJA_Features.EveryoneLabel()}'.", 600);
+                _creatorName(__instance) = creatorName;
+                NJA_Logging.DebugThrottled($"boundbill.set.{__instance?.thingIDNumber ?? -1}", $"UnfinishedThing.BoundBill setter normalized creator name to '{creatorName}'.", 600);
             }
         }
 
