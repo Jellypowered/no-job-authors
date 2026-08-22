@@ -12,19 +12,15 @@
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <RimWorldPath Condition="'$(RimWorldPath)' == '' AND '$(OS)' == 'Windows_NT'"
-      >F:/SteamLibrary/steamapps/common/RimWorld/RimWorldWin64_Data/Managed</RimWorldPath
-    >
-    <RimWorldPath Condition="'$(RimWorldPath)' == '' AND '$(OS)' != 'Windows_NT'"
-      >../../../RimWorldLinux_Data/Managed</RimWorldPath
-    >
+    <RimWorldPath Condition="'$(RimWorldPath)' == '' AND '$(OS)' == 'Windows_NT'">F:/SteamLibrary/steamapps/common/RimWorld/RimWorldWin64_Data/Managed</RimWorldPath>
+    <RimWorldPath Condition="'$(RimWorldPath)' == '' AND '$(OS)' != 'Windows_NT'">../../../RimWorldLinux_Data/Managed</RimWorldPath>
   </PropertyGroup>
   <ItemGroup>
     <!-- Mod -->
     <Compile Include="../Source/*" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4633" />
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.6.4871" />
     <PackageReference Include="Lib.Harmony" Version="2.4.2" ExcludeAssets="runtime">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>

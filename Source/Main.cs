@@ -448,9 +448,6 @@ namespace NoJobAuthors
         [HarmonyPatch(typeof(Bill_ProductionWithUft), "get_BoundWorker")]
         internal class Patch_Bill_ProductionWithUft
         {
-            private static readonly AccessTools.FieldRef<Bill_ProductionWithUft, UnfinishedThing> _boundUft = AccessTools.FieldRefAccess<Bill_ProductionWithUft, UnfinishedThing>("boundUftInt");
-            private static readonly AccessTools.FieldRef<UnfinishedThing, Pawn> _creator = AccessTools.FieldRefAccess<UnfinishedThing, Pawn>("creatorInt");
-
             [HarmonyAfter("Harmony_PrisonLabor")]
             [HarmonyPrefix]
             private static bool Prefix(Bill_ProductionWithUft __instance, ref Pawn __result)
@@ -479,52 +476,13 @@ namespace NoJobAuthors
                     return false;
                 }
 
-                UnfinishedThing uft = _boundUft(__instance);
-                if (uft == null)
-                {
-                    __result = null;
-                    return false;
-                }
-
-                Pawn creator = _creator(uft);
-                if (creator == null || creator.Downed || creator.HostFaction != null || creator.Destroyed || !creator.Spawned)
-                {
-                    __result = null;
-                    NJA_Logging.DebugThrottled(
-                        $"boundworker.invalid.{uft.thingIDNumber}",
-                        $"BoundWorker override kept bound UFT #{uft.thingIDNumber} attached while creator was unavailable.",
-                        240);
-                    return false;
-                }
-
-                if (__instance.billStack?.billGiver is Thing thing)
-                {
-                    WorkTypeDef workTypeDef = null;
-                    List<WorkGiverDef> allDefsListForReading = DefDatabase<WorkGiverDef>.AllDefsListForReading;
-                    for (int i = 0; i < allDefsListForReading.Count; i++)
-                    {
-                        if (allDefsListForReading[i].fixedBillGiverDefs != null && allDefsListForReading[i].fixedBillGiverDefs.Contains(thing.def))
-                        {
-                            workTypeDef = allDefsListForReading[i].workType;
-                            break;
-                        }
-                    }
-
-                    if (workTypeDef != null && creator.workSettings != null && !creator.workSettings.WorkIsActive(workTypeDef))
-                    {
-                        __result = null;
-                        NJA_Logging.DebugThrottled(
-                            $"boundworker.disabled.{creator.ThingID}.{__instance.recipe?.defName ?? "null"}",
-                            $"BoundWorker override returned null because {creator.LabelShort} has work type '{workTypeDef.defName}' disabled.",
-                            240);
-                        return false;
-                    }
-                }
-
-                __result = creator;
+                // With no explicit worker restriction, do not expose the original
+                // creator as the bill worker. Vanilla uses that binding to reserve an
+                // unfinished item for the pawn who started it.
+                __result = null;
                 NJA_Logging.DebugThrottled(
-                    $"boundworker.prefix.{creator.ThingID}.{__instance.recipe?.defName ?? "null"}",
-                    $"BoundWorker override returned raw creator {creator.LabelShort} for recipe '{__instance.recipe?.defName ?? "null"}'.",
+                    $"boundworker.shared.{__instance?.recipe?.defName ?? "null"}",
+                    $"BoundWorker override returned null for unrestricted shared recipe '{__instance?.recipe?.defName ?? "null"}'.",
                     240);
                 return false;
             }
