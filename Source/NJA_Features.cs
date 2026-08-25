@@ -125,15 +125,12 @@ namespace NoJobAuthors
             }
         }
 
-        internal static bool ResumeJobAuthorMismatch(UnfinishedThing unfinishedThing, Pawn pawn)
+        internal static bool CanPawnResumeBoundUft(Bill_ProductionWithUft bill, Pawn pawn)
         {
-            if (unfinishedThing == null)
+            if (ShouldUseSharedAuthoring(bill?.recipe))
                 return true;
 
-            if (ShouldUseSharedAuthoring(unfinishedThing))
-                return false;
-
-            return unfinishedThing.Creator != pawn;
+            return bill?.BoundWorker == pawn;
         }
 
         internal static bool FinishJobAuthorMatches(UnfinishedThing unfinishedThing, Pawn pawn)

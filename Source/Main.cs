@@ -174,8 +174,8 @@ namespace NoJobAuthors
         [HarmonyPatch(typeof(WorkGiver_DoBill), "StartOrResumeBillJob")]
         public static class WorkGiver_DoBill_StartOrResumeBillJob_Patch
         {
-            private static readonly MethodInfo _resumeJobAuthorMismatch =
-                AccessTools.Method(typeof(NJA_Features), nameof(NJA_Features.ResumeJobAuthorMismatch));
+            private static readonly MethodInfo _canPawnResumeBoundUft =
+                AccessTools.Method(typeof(NJA_Features), nameof(NJA_Features.CanPawnResumeBoundUft));
 
             [HarmonyTranspiler]
             public static IEnumerable<CodeInstruction> StartOrResumeBillJob(IEnumerable<CodeInstruction> instructions)
@@ -187,15 +187,15 @@ namespace NoJobAuthors
                     if (index + 3 < arr.Length &&
                         arr[index + 0].opcode == OpCodes.Ldloc_S &&
                         arr[index + 1].opcode == OpCodes.Callvirt &&
-                        Equals(arr[index + 1].operand, AccessTools.PropertyGetter(typeof(UnfinishedThing), nameof(UnfinishedThing.Creator))) &&
+                        Equals(arr[index + 1].operand, AccessTools.PropertyGetter(typeof(Bill_ProductionWithUft), nameof(Bill_ProductionWithUft.BoundWorker))) &&
                         arr[index + 2].opcode == OpCodes.Ldarg_1 &&
                         arr[index + 3].opcode == OpCodes.Bne_Un)
 
                     {
                         yield return new CodeInstruction(arr[index + 0].opcode, arr[index + 0].operand);
                         yield return new CodeInstruction(OpCodes.Ldarg_1);
-                        yield return new CodeInstruction(OpCodes.Call, _resumeJobAuthorMismatch);
-                        yield return new CodeInstruction(OpCodes.Brtrue, arr[index + 3].operand);
+                        yield return new CodeInstruction(OpCodes.Call, _canPawnResumeBoundUft);
+                        yield return new CodeInstruction(OpCodes.Brfalse, arr[index + 3].operand);
                         rewrites++;
                         index += 3;
                     }
